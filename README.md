@@ -4,7 +4,7 @@ Note: The following assignment was completed during Semester 2 (2024) <br>
 Language(s): Bash 
 
 ## The Details: 
-Create a .txt file which contains information about your CD collection. Include at least 10 records. Each record in the file should have Artist, CDName, PurchaseDate and Cost using the ";" (semicolon character) as a delimiter. <br><br>
+Create a .txt file which contains information about your CD collection. Include at least 10 records. Each record in the file should have Artist, CDName, PurchaseDate and Cost using the ";" (semicolon character) as a delimiter. <br><br> ex. Ariana Grande;Positions;October 30, 2020;14 <br><br>
 Create a Bash script file with a menu that lets you:
 <ul>
   <li>View the contents of the music collection file - this option should display the entire collection</li>
