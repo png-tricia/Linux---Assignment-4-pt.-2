@@ -1,0 +1,71 @@
+#!/bin/bash
+
+# SYST15123 - Assignment 04
+# Patricia Gariando
+# Patricia_Gariando_A4
+
+echo " "
+echo "     Welcome to Pat's music collection!"
+echo "(1) View the entire collection"
+echo "(2) View the cost of the entire collection"
+echo "(3) Search for the CD Artist"
+echo "(4) Search for the CD purchase date"
+echo "(5) Exit"
+echo -n "Select an option from 1 to 5: "
+read option
+
+# when an invalid input occurs 
+f1 (){
+while [[ $option -ne 1 ]]
+do
+        echo -n "Invalid option. Enter 1 to return to the main menu: "
+        read option
+done
+}
+
+while [[ $? -ne 5 ]]
+do
+        if [[ $option -eq 1 ]]
+        then
+                printf "\n"
+                echo "{ The Collection }"
+                awk -F';' '{print "Artist: "$1"\nAlbum Name: "$2"\nPurchase Date: "$3"\nAlbum Price: "$4"\n"}' Patricia_Gariando_music
+        elif [[ $option -eq 2 ]]
+        then
+                printf "\n"
+                echo -n "Patricia's music collection costs: "
+                awk -F';' '{total += $4} END {printf "$%d\n", total}' Patricia_Gariando_music
+                printf "\n"
+        elif [[ $option -eq 3 ]]
+        then
+                echo -n "Enter the artist's name you want to view a CD collection of: "
+                read artist
+                if [[ $(awk -F';' '{print $1}' Patricia_Gariando_music | grep -i "$artist") ]]
+                then
+                        printf "\n"
+                        awk -F';' '{print $0}' Patricia_Gariando_music | grep -i "$artist" | awk -F';' '{print "Album Name: "$2"\nPrice: "$4"\n"}'
+                else
+                        echo "Nothing is found for the artist specified!"
+                fi
+        elif  [[ $option -eq 4 ]]
+        then
+                echo  "Search the collection via purchase date."
+                echo -n "Please follow the format (Month Day, Year): "
+                read date
+                if [[ $(awk -F';' '{print $3}' Patricia_Gariando_music | grep -i "$date") ]]
+                then
+                        printf "\n"
+                        awk -F';' '{print $0}' Patricia_Gariando_music | grep -i "$date" | awk -F';' '{print "Artist: "$1"\nAlbum Name: "$2"\nPrice: "$4"\n"}'
+                else
+                        echo "Nothing is found for the date specified!"
+                fi
+        elif [[ $option -lt 1 || $option -gt 5 ]]
+        then
+                f1
+        else
+                echo "You've exited out of the program!"
+                exit 5
+        fi
+echo -n "Select an option from 1 to 5: "
+read option
+done
