@@ -1,7 +1,6 @@
 ## SYST15123 OS - Linux: Assignment 4 pt. 2
 Program: **Computer Programming @ Sheridan College** <br>
 Note: The following assignment was completed during Semester 2 (2024) <br>
-Language(s): Bash 
 
 ## The Details: 
 Create a .txt file which contains information about your CD collection. Include at least 10 records. Each record in the file should have Artist, CDName, PurchaseDate and Cost using the ";" (semicolon character) as a delimiter. <br><br> ex. Ariana Grande;Positions;October 30, 2020;14 <br><br>
